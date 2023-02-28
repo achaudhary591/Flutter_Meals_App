@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           secondary: Colors.amber,
         ),
       ),
-      darkTheme: ThemeData.dark(),
+      darkTheme: ThemeData.dark(/*useMaterial3: true*/),
       // home: CategoriesScreen(),
       initialRoute: '/',
       routes: {

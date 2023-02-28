@@ -44,11 +44,13 @@ class CategoryItem extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
-          borderRadius: BorderRadius.circular(7),
+          borderRadius: BorderRadius.circular(15),
         ),
-        child: Text(
-          title,
-          style: Theme.of(context).textTheme.titleLarge,
+        child: Center(
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
         ),
       ),
     );

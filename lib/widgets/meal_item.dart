@@ -21,30 +21,30 @@ class MealItem extends StatelessWidget {
   });
 
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(MealDetailScreen.routeName, arguments: id,);
+    Navigator.of(context).pushNamed(
+      MealDetailScreen.routeName,
+      arguments: id,
+    );
   }
 
   String get complexityTest {
-    if(complexity == Complexity.Simple){
+    if (complexity == Complexity.Simple) {
       return 'Simple';
-    }
-    else if(complexity == Complexity.Challenging){
+    } else if (complexity == Complexity.Challenging) {
       return 'Challenging';
     }
-    if(complexity == Complexity.Hard){
+    if (complexity == Complexity.Hard) {
       return 'Hard';
     }
     return 'Unknown Complexity';
   }
 
   String get affordabilityText {
-    if(affordability == Affordability.Affordable){
+    if (affordability == Affordability.Affordable) {
       return 'Affordable';
-    }
-    else if(affordability == Affordability.Luxurious){
+    } else if (affordability == Affordability.Luxurious) {
       return 'Luxurious';
-    }
-    else if(affordability == Affordability.Pricey){
+    } else if (affordability == Affordability.Pricey) {
       return 'Pricey';
     }
     return 'Unknown Affordability';
@@ -82,7 +82,7 @@ class MealItem extends StatelessWidget {
                   child: Container(
                     width: 300,
                     color: Colors.black54,
-                    padding: const EdgeInsets.symmetric(
+                    padding: EdgeInsets.symmetric(
                       vertical: 5,
                       horizontal: 20,
                     ),
@@ -96,7 +96,7 @@ class MealItem extends StatelessWidget {
                       overflow: TextOverflow.fade,
                     ),
                   ),
-                )
+                ),
               ],
             ),
             Padding(

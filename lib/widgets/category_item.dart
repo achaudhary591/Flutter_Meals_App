@@ -28,12 +28,12 @@ class CategoryItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
-              color: color.withOpacity(0.65),
+              color: Colors.grey,
               spreadRadius: 1,
               blurRadius: 7,
-              offset: const Offset(0, 9),
+              offset: Offset(0, 9),
             ),
           ],
           gradient: LinearGradient(

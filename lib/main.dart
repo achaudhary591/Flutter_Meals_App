@@ -8,10 +8,10 @@ import 'models/meals.dart';
 import 'screens/category_meals_screen.dart';
 import 'screens/categories_screen.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -25,6 +25,27 @@ class _MyAppState extends State<MyApp> {
     'vegan': false,
     'vegetarian': false,
   };
+  List<Meal> availableMeals = DUMMY_MEALS;
+  List<Meal> favouriteMeals = [];
+
+  void toggleFavourite(String mealId){
+    final existingIndex = favouriteMeals.indexWhere((meal) => meal.id == mealId);
+
+    if(existingIndex >= 0){
+      setState(() {
+        favouriteMeals.removeAt(existingIndex);
+      });
+    }
+    else{
+      setState(() {
+        favouriteMeals.add(DUMMY_MEALS.firstWhere((meal) => meal.id == mealId));
+      });
+    }
+  }
+
+  bool isMealFavourite(String mealId){
+    return favouriteMeals.any((meal) => meal.id == mealId);
+  }
 
   void setFilters(Map<String, bool> filterData) {
     setState(() {
@@ -47,7 +68,8 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  List<Meal> availableMeals = DUMMY_MEALS;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -81,10 +103,10 @@ class _MyAppState extends State<MyApp> {
       // home: CategoriesScreen(),
       initialRoute: '/',
       routes: {
-        '/': (ctx) => TabsScreen(),
+        '/': (ctx) => TabsScreen(favouriteMeals),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(availableMeals),
-        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
-        FiltersScreen.routeName: (ctx) => FiltersScreen(setFilters),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(toggleFavourite, isMealFavourite),
+        FiltersScreen.routeName: (ctx) => FiltersScreen(setFilters, filters),
       },
       onGenerateRoute: (settings) {
         print(settings.arguments);

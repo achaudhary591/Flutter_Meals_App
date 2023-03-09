@@ -35,7 +35,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
       ModalRoute.of(context)!.settings.arguments as Map<String, String>;
       categoryTitle = routeArgs['title']!;
       categoryId = routeArgs['id']!;
-      displayedMeals = DUMMY_MEALS.where((meal) {
+      displayedMeals = widget.availableMeals.where((meal) {
         return meal.categories.contains(categoryId);
       }).toList();
       loadedInitData = true;
@@ -64,7 +64,6 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
             duration: displayedMeals![index].duration,
             complexity: displayedMeals![index].complexity,
             affordability: displayedMeals![index].affordability,
-            removeItem: removeMeal,
           );
         },
         itemCount: displayedMeals!.length,
